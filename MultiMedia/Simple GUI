@@ -1,0 +1,71 @@
+from tkinter import *
+import webbrowser
+
+# ============================
+# Function to open the link entered in the text box
+def open_link():
+    link = link_entry.get()
+    if link.strip() != "":
+        webbrowser.open(link)
+    else:
+        status_label.config(text="Please enter a valid link", fg="red")
+
+# ============================
+# Setup the main window
+root = Tk()
+root.title("Link Opener")
+root.geometry("500x300")
+root.config(bg="#ffe6f0")  # Soft pink background
+
+# ============================
+# Title label
+title_label = Label(
+    root,
+    text="Welcome to Link Opener",
+    font="Helvatica 16 bold",
+    bg="#ffe6f0",
+    fg="#ff3399"
+)
+title_label.pack(pady=20)
+
+# ============================
+# Link entry box
+link_entry = Entry(
+    root,
+    font="Helvatica 12",
+    width=40,
+    bd=3,  # Border thickness
+    relief=RIDGE
+)
+link_entry.pack(pady=10, ipady=8)
+
+# ============================
+# Open link button
+open_button = Button(
+    root,
+    text="Open Link",
+    fg="white",
+    bg="#ff66b2",
+    font="Helvatica 12 bold",
+    padx=20,
+    pady=5,
+    command=open_link,
+    relief=RAISED,
+    bd=3
+)
+open_button.pack(pady=10)
+
+# ============================
+# Status label
+status_label = Label(
+    root,
+    text="Enter a link and click the button to open",
+    font="Helvatica 10 italic",
+    bg="#ffe6f0",
+    fg="#99004d"
+)
+status_label.pack(pady=20)
+
+# ============================
+# Run the application
+root.mainloop()
